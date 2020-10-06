@@ -7,6 +7,6 @@ export default function HomePage(props) {
       Home page
     </Text>
 
-    <Button title="Account" onPress={() => props.navigation.navigate("Account")} />
+    <Button title="Home/Details" onPress={() => props.navigation.navigate("Home/Details")} />
   </View>
 }
