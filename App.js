@@ -1,17 +1,12 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-} from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import HomePage from './src/containers/Home';
-import AccountPage from './src/containers/Account';
+import HomePage from 'containers/Home';
+import AccountPage from 'containers/Account';
 
 const Stack = createStackNavigator();
 
