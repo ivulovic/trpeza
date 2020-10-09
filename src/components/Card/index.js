@@ -5,7 +5,7 @@ import createStyle from './css';
 
 export default function Card({ name, dateAdded, quantity, icon, categoryName }) {
   const styles = createStyle();
-  return <TouchableOpacity style={styles.card}>
+  return <TouchableOpacity style={styles.card} onLongPress={() => console.log("long press")}>
     <View style={styles.cardImage}>
       <Image style={styles.cardImageIcon} source={icon} />
     </View>

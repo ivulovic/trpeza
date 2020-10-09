@@ -7,9 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
-import HomePage from 'containers/Home';
+import ProductsPage from 'containers/Products';
 import AccountPage from 'containers/Account';
-import HomeDetailsPage from 'containers/Home/Details';
+import ProductsDetailsPage from 'containers/Products/Details';
 import AccountDetailsPage from 'containers/Account/Details';
 import RecipesPage from 'containers/Recipes';
 import RecipesDetailsPage from 'containers/Recipes/Details';
@@ -17,16 +17,16 @@ import RecipesDetailsPage from 'containers/Recipes/Details';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomeStack = createStackNavigator();
+const ProductsStack = createStackNavigator();
 
-function HomeStackScreen() {
+function ProductsStackScreen() {
   return (
-    <HomeStack.Navigator screenOptions={{
+    <ProductsStack.Navigator screenOptions={{
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}>
-      <HomeStack.Screen options={{ headerShown: false }} name="Home" component={HomePage} />
-      <HomeStack.Screen name="Home/Details" component={HomeDetailsPage} />
-    </HomeStack.Navigator>
+      <ProductsStack.Screen options={{ headerShown: false }} name="Products" component={ProductsPage} />
+      <ProductsStack.Screen name="Products/Details" component={ProductsDetailsPage} />
+    </ProductsStack.Navigator>
   );
 }
 const RecipesStack = createStackNavigator();
@@ -50,14 +50,12 @@ function AccountStackScreen() {
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}>
       <AccountStack.Screen name="Account" options={{ headerShown: false }} component={AccountPage} />
-      <HomeStack.Screen name="Account/Details" component={AccountDetailsPage} />
+      <ProductsStack.Screen name="Account/Details" component={AccountDetailsPage} />
     </AccountStack.Navigator>
   );
 }
-// https://www.flaticon.com/free-icon/paste_3388549
-// https://www.flaticon.com/packs/basic-ui-27
 const tabIcons = {
-  Home: require("./src/images/icons/navigation/main/home.png"),
+  Products: require("./src/images/icons/navigation/main/list2.png"),
   Recipes: require("./src/images/icons/navigation/main/chef.png"),
   Account: require("./src/images/icons/navigation/main/user.png"),
 }
@@ -70,15 +68,15 @@ const App = () => {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-              return <Image resizeMode="contain" style={{ height: 24, width: 24, tintColor: focused ? '#4ad295' : "#000" }} source={tabIcons[route.name]} />
+              return <Image resizeMode="contain" style={{ height: 26, width: 26, tintColor: focused ? '#4ad295' : "#000" }} source={tabIcons[route.name]} />
             },
           })}
           tabBarOptions={{
             showLabel: false,
           }}
         >
-          <Tab.Screen name="Home" component={HomeStackScreen} />
           <Tab.Screen name="Recipes" component={RecipesStackScreen} />
+          <Tab.Screen name="Products" component={ProductsStackScreen} />
           <Tab.Screen name="Account" component={AccountStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>

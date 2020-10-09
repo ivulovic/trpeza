@@ -14,11 +14,11 @@ const Page = ({ category }) => (
   </TabContent>
 );
 
-export default function HomePage() {
+export default function ProductsPage() {
   const styles = createStyle()
-
+  const childrenLength = 7;
   const scrollX = new Animated.Value(0);
-  const interpolators = Array.from({ length: 8 }, (_, i) => i).map(idx => ({
+  const interpolators = Array.from({ length: childrenLength }, (_, i) => i).map(idx => ({
     scale: scrollX.interpolate({
       inputRange: [idx - 1, idx, idx + 1],
       outputRange: [1, 1.2, 1],
@@ -31,7 +31,7 @@ export default function HomePage() {
     }),
     textColor: scrollX.interpolate({
       inputRange: [idx - 1, idx, idx + 1],
-      outputRange: ['#000', '#fff', '#000'],
+      outputRange: ['#000', '#4ad295', '#000'],
     }),
     backgroundColor: scrollX.interpolate({
       inputRange: [idx - 1, idx, idx + 1],
@@ -42,21 +42,33 @@ export default function HomePage() {
   return (
     <View style={{ flex: 1, flexGrow: 1, }}>
 
-      <View style={styles.homeHeader}>
+      {/* <View style={styles.homeHeader}>
         <Text style={styles.pageTitle}>Trpeza</Text>
-      </View>
-
-      <View style={{ flex: 1, flexGrow: 1, }}>
+      </View> */}
+      <View />
+      <View style={{ flex: 1, flexGrow: 1, overflow: 'hidden', }}>
         <ScrollableTabView
           renderTabBar={() => (
             <TabBar
-              underlineColor="#000"
-              tabBarStyle={{ backgroundColor: "#fff", borderTopColor: '#d2d2d2', borderTopWidth: 1, marginTop: 0, }}
+              underlineColor="transparent"
+              tabBarStyle={{
+                marginTop: 0,
+                backgroundColor: "#fff",
+                borderBottomWidth: 0,
+                backgroundColor: '#fff',
+                shadowColor: '#000',
+                shadowOffset: { width: 1, height: 1 },
+                shadowOpacity: 0.4,
+                shadowRadius: 3,
+                elevation: 10,
+                // width: '100%',
+              }}
               renderTab={(tab, page, isTabActive, onPressHandler, onTabLayout) => (
                 <Tab
                   key={page}
                   tab={tab}
                   page={page}
+                  length={childrenLength}
                   isTabActive={isTabActive}
                   onPressHandler={onPressHandler}
                   onTabLayout={onTabLayout}
@@ -67,16 +79,16 @@ export default function HomePage() {
           )}
           onScroll={(x) => scrollX.setValue(x)}
         >
-          <Page tabLabel={{ label: "Svi proizvodi", icon: iconsSet.all }} category="all" />
+          {/* <Page tabLabel={{ label: "Proizvodi", icon: iconsSet.all }} category="all" /> */}
           <Page tabLabel={{ label: "Namirnice", icon: iconsSet.groceries }} category="groceries" />
-          <Page tabLabel={{ label: "Voće i povrće", icon: iconsSet.fruitAndVegetables }} category="fruitAndVegetables" />
-          <Page tabLabel={{ label: "Meso i riba", icon: iconsSet.meatAndFish }} category="meatAndFish" />
-          <Page tabLabel={{ label: "Mlečni proizvodi", icon: iconsSet.dairy }} category="dairy" />
-          <Page tabLabel={{ label: "Zamrznuta hrana", icon: iconsSet.frozen }} category="frozen" />
+          <Page tabLabel={{ label: "Voće", icon: iconsSet.fruit }} category="fruit" />
+          <Page tabLabel={{ label: "Povrće", icon: iconsSet.vegetables }} category="vegetables" />
+          <Page tabLabel={{ label: "Meso", icon: iconsSet.meatAndFish }} category="meatAndFish" />
+          <Page tabLabel={{ label: "Mlečni", icon: iconsSet.dairy }} category="dairy" />
+          <Page tabLabel={{ label: "Zamrznuti", icon: iconsSet.frozen }} category="frozen" />
           <Page tabLabel={{ label: "Piće", icon: iconsSet.drinks }} category="drinks" />
-          <Page tabLabel={{ label: "Hrana za decu", icon: iconsSet.baby }} category="child" />
         </ScrollableTabView>
       </View>
-    </View>
+    </View >
   );
 }
