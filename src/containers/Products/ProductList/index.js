@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Animated } from 'react-native';
-import Card from '../../../components/Card';
+import { View } from 'react-native';
+import Card from 'components/Card';
 
 import createStyle from './css';
-import { createProduct, demoProducts } from './helpers';
+import { demoProducts } from './helpers';
 
 export default function ProductList({ category }) {
   const styles = createStyle();

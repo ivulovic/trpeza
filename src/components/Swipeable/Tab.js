@@ -36,8 +36,8 @@ const Tab = ({ tab, page, isTabActive, onPressHandler, onTabLayout, styles, leng
   return (
     <TouchableOpacity style={style} onPress={onPressHandler} onLayout={onTabLayout} key={page}>
       <Animated.View style={{ ...containerStyle, ...lastItemStyle }}>
-        <Animated.Image style={iconStyle} source={icon} />
-        <Animated.Text style={textStyle}>{label}</Animated.Text>
+        {icon && <Animated.Image style={iconStyle} source={icon} />}
+        {label && <Animated.Text style={textStyle}>{label}</Animated.Text>}
       </Animated.View>
     </TouchableOpacity>
   );
