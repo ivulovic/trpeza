@@ -37,7 +37,7 @@ function RecipesStackScreen() {
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}>
       <RecipesStack.Screen options={{ headerShown: false }} name="Recipes" component={RecipesPage} />
-      <RecipesStack.Screen name="Recipes/Details" component={RecipesDetailsPage} />
+      <RecipesStack.Screen name="Recipes/Details" options={{ headerShown: false }} component={RecipesDetailsPage} />
     </RecipesStack.Navigator>
   );
 }

@@ -8,7 +8,6 @@ export default function createStyle() {
       marginVertical: 5,
     },
     thumbnailInner: {
-      backgroundColor: 'white',
       marginHorizontal: 5,
       alignItems: 'center',
       paddingVertical: 10,
@@ -40,10 +39,16 @@ export default function createStyle() {
       marginBottom: 10
     },
     inactive: {
-      opacity: 0.3,
+      opacity: 0.5,
     },
     active: {
       opacity: 1,
+    },
+    inactiveThumnail: {
+      backgroundColor: '#fdeded',
+    },
+    activeThumnail: {
+      backgroundColor: 'white'
     }
   })
 }

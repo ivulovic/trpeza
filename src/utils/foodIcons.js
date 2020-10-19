@@ -1,3 +1,5 @@
+// https://www.flaticon.com/packs/vegan-41
+
 const iconsPath = '../images/icons/food';
 const icons = {
   // freezer
